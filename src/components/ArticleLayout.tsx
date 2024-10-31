@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { Container } from "@/components/Container";
 import { Prose } from "@/components/Prose";
 import { type ArticleWithSlug } from "@/lib/articles";
-import { useNavigate } from "react-router-dom";
 import { AppContext } from "./providers/AppProvider";
 import { formateDate } from "@/lib";
 
@@ -27,7 +26,6 @@ export function ArticleLayout({
   article: ArticleWithSlug;
   children: React.ReactNode;
 }) {
-  const navigate = useNavigate();
   let { previousPathname } = useContext(AppContext);
 
   return (
