@@ -1,7 +1,8 @@
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Outlet } from "react-router-dom";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout() {
   return (
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
@@ -11,9 +12,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className="relative flex w-full flex-col">
         <Header />
-        <main className="flex-auto">{children}</main>
+        <main className="flex-auto">
+          <Outlet />
+        </main>
         <Footer />
       </div>
     </>
-  )
+  );
 }

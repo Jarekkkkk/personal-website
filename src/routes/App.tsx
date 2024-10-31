@@ -10,8 +10,8 @@ import {
   LinkedInIcon,
   XIcon,
 } from "@/components/SocialIcons";
-import { ArticleWithSlug, getAllArticles } from "./lib/articles";
-import { formateDate } from "./lib";
+import { ArticleWithSlug, getAllArticles } from "@/lib/articles";
+import { formateDate } from "@/lib";
 import { useEffect, useState } from "react";
 
 function MailIcon(props: React.ComponentPropsWithoutRef<"svg">) {
@@ -244,14 +244,14 @@ function Photos() {
         {["image-1", "image-2", "image-3", "image-4", "image-5"].map(
           (image, imageIndex) => (
             <div
-              key={`/images/photos/${image}.jpg`}
+              key={image}
               className={clsx(
                 "relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800",
                 rotations[imageIndex % rotations.length],
               )}
             >
               <img
-                src={image}
+                src={`/images/photos/${image}.jpg`}
                 alt=""
                 sizes="(min-width: 640px) 18rem, 11rem"
                 className="absolute inset-0 h-full w-full object-cover"
