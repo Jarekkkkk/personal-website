@@ -17,8 +17,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const pathname = location.pathname;
   const previousPathname = usePrevious(pathname);
 
-  console.log(previousPathname);
-
   return (
     <AppContext.Provider value={{ previousPathname }}>
       {children}

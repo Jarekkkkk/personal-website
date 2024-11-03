@@ -74,6 +74,7 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 }
 
 function Article({ article }: { article: ArticleWithSlug }) {
+  console.log("article", article);
   return (
     <Card as="article">
       <Card.Title href={`/articles/${article.slug}`}>

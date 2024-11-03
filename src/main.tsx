@@ -10,6 +10,7 @@ import Articles from "./routes/Articles.tsx";
 import Projects from "./routes/Projects.tsx";
 import Speaking from "./routes/Speaking.tsx";
 import Uses from "./routes/Uses.tsx";
+import { Article, articleLoader } from "./components/Article.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         element: <Articles />,
       },
       {
+        path: "/articles/:slug",
+        loader: articleLoader,
+        element: <Article />,
+      },
+      {
         path: "/projects",
         element: <Projects />,
       },
@@ -45,12 +51,12 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-        <body className="flex h-full bg-zinc-500 w-screen dark:bg-black">
+    <div className="h-full antialiased" suppressHydrationWarning>
+      <body className="flex h-full bg-zinc-500 w-screen dark:bg-black">
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <RouterProvider router={router} />
-        </body>
-      </html>
-    </ThemeProvider>
+        </ThemeProvider>
+      </body>
+    </div>
   </StrictMode>,
 );
