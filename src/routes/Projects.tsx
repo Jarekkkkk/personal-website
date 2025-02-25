@@ -3,39 +3,26 @@ import { SimpleLayout } from "@/components/SimpleLayout";
 
 const projects = [
   {
-    name: "Planetaria",
+    name: "SuiDoubashi",
     description:
-      "Creating technology to empower civilians to explore space on their own terms.",
-    link: { href: "http://planetaria.tech", label: "planetaria.tech" },
+      "Ve(3,3) DEX protocol combing vesting feature from Curve and the bond mechanism from OlympusDAO.",
+    link: {
+      href: "https://github.com/Jarekkkkk/SuiDouBashi_SC",
+      label: "github",
+    },
     logo: "/images/logos/planetaria.svg",
   },
   {
-    name: "Animaginary",
-    description:
-      "High performance web animation library, hand-written in optimized WASM.",
-    link: { href: "#", label: "github.com" },
+    name: "Matrix",
+    description: "OracleFree Defi lending Protocol",
+    link: { href: "https://matrix-app-black.vercel.app/", label: "website" },
     logo: "/images/logos/animaginary.svg",
   },
   {
-    name: "HelioStream",
-    description:
-      "Real-time video streaming library, optimized for interstellar transmission.",
-    link: { href: "#", label: "github.com" },
-    logo: "/images/logos/helio-stream.svg",
-  },
-  {
-    name: "cosmOS",
-    description:
-      "The operating system that powers our Planetaria space shuttles.",
-    link: { href: "#", label: "github.com" },
-    logo: "/images/logos/cosmos.svg",
-  },
-  {
-    name: "OpenShuttle",
-    description:
-      "The schematics for the first rocket I designed that successfully made it to orbit.",
-    link: { href: "#", label: "github.com" },
-    logo: "/images/logos/open-shuttle.svg",
+    name: "Strater",
+    description: "One-Stop DeFi operation hub",
+    link: { href: "https://www.strater.xyz/", label: "website" },
+    logo: "/images/logos/strater-logo.svg",
   },
 ];
 
@@ -54,7 +41,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      intro="I’ve worked on tons of little projects over the years in sui ecosystem. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
     >
       <ul
         role="list"
@@ -66,7 +53,9 @@ export default function Projects() {
               <img src={project.logo} alt="" className="h-8 w-8" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link to={project.link.href}>{project.name}</Card.Link>
+              <Card.Link target="_blank" to={project.link.href}>
+                {project.name}
+              </Card.Link>
             </h2>
             <Card.Description>{project.description}</Card.Description>
             <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
