@@ -283,8 +283,8 @@ export default function App() {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Jarek, a web3 designer and developer based in Taiwan. I’m deeply
-            passionate about DeFi projects and blockchain use cases like DID and
-            Automous World to bring true utility to the world.
+            passionate about DeFi projects and blockchain use cases which can
+            truly bring utility to the world
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
