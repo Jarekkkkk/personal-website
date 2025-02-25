@@ -151,7 +151,11 @@ function Role({ role }: { role: Role }) {
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <img src={role.logo} alt="" className="h-7 w-7" />
+        <img
+          src={role.logo}
+          alt=""
+          className="h-7 w-7 rounded-full object-cover"
+        />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -179,42 +183,35 @@ function Role({ role }: { role: Role }) {
 function Resume() {
   let resume: Array<Role> = [
     {
-      company: "Planetaria",
-      title: "CEO",
-      logo: "/images/logos/planetaria.svg",
-      start: "2019",
+      company: "Bucket",
+      title: "Move Developer",
+      logo: "/images/logos/bucket-logo.png",
+      start: "2024",
       end: {
         label: "Present",
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: "Airbnb",
-      title: "Product Designer",
-      logo: "/images/logos/airbnb.svg",
-      start: "2014",
-      end: "2019",
+      company: "None capital",
+      title: "Researcher",
+      logo: "/images/logos/none-capital-logo.png",
+      start: "2022",
+      end: "2023",
     },
     {
-      company: "Facebook",
-      title: "iOS Software Engineer",
-      logo: "/images/logos/facebook.svg",
-      start: "2011",
-      end: "2014",
-    },
-    {
-      company: "Starbucks",
-      title: "Shift Supervisor",
-      logo: "/images/logos/starbucks.svg",
-      start: "2008",
-      end: "2011",
+      company: "Inline",
+      title: "Intern",
+      logo: "/images/logos/inline-logo.png",
+      start: "2021",
+      end: "2021",
     },
   ];
 
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
+        <BriefcaseIcon className="h-6 w-6 flex-none ro" />
         <span className="ml-3">Work</span>
       </h2>
       <ol className="mt-6 space-y-4">

@@ -56,16 +56,6 @@ p {
 }
 
 /* Lists */
-ul,
-ol {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
-}
-
-ul {
-  list-style-type: disc;
-}
-
 ol {
   list-style-type: decimal;
 }
