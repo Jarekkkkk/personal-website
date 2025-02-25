@@ -1,0 +1,40 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import TBWCover from "./tbw-cover.webp"
+import MatrixScreenshot from "./matrix-screenshot.webp"
+
+export const article = {
+  author: 'Adam Wathan',
+  date: '2023-12-17',
+  title: 'Matrix Unleashed: Building an Oracle-Free DeFi at Taipei Blockchain Week',
+  description:
+    'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+
+<img src={TBWCover} alt="" />
+
+<br></br>
+<p>
+In early December, I had the opportunity to participate in Taiwan's largest blockchain campaign, Taipei Blockchain Week. The hackathon alone offered a staggering total prize pool of over 50K, along with massive summit events and insightful panel discussions.Engaging with tech elites and seasoned founders in person opened my eyes to the wealth of unexplored ideas and implementations in the blockchain space. My journey this time become the most memorable takeaway so far this year.
+</p>
+
+
+<br></br>
+<h1>Why Sui?</h1>
+Besides the highest prize they offered, we choose Sui to build because of its advanced tech stack and outstanding developer experience. Despite being launched just seven months ago, Sui has quickly become a topic of discussion as the next revolutionary layer 1 blockchain. Not only is it fast, cheap and stable, but it also consistently introduces new features such as zk-login and closed-loop tokens.
+
+
+<br></br>
+<h1>What We Built: Matrix</h1>
+<p>
+Our project name is Matrix. The core idea is to eliminate the constraints of oracles in borrowing and lending protocols to build a no-governance and oracle-free Defi primitive layers on blockchain. Because in traditional money market both quote assets and collateral are highly rely on the price feeds from oracle, excluding long-tail assets and NFTs from the decentralization discussion, which is inefficient for some gaming assets represented by NFT and long-tail tokens let alone being exposed to the risk of price manipulation from oracle.
+</p>
+<img src={MatrixScreenshot} alt="" />
+
+<br></br>
+Problems We Solve
+<p>
+Our protocol addresses these issues by publicly disclosing the prices of any assets on the markets, replacing the role of oracles to achieve a price-discovery feature. Moreover, we introduce unique blend of concentrated liquidity idea from Uniswap V3, allowing all assets within each price tick to be eligible for borrowing to enhance capital efficiency. Lastly, our built-in trade mechanism offer the swap trade feature and borrowing options trade.
+</p>

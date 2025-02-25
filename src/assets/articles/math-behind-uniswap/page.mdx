@@ -1,0 +1,153 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import UniswapMath1 from "./uniswap-math-1.png"
+import UniswapMath2 from "./uniswap-math-2.png"
+import Formula1 from "./formula-1.png"
+import Formula2 from "./formula-2.png"
+import Formula3 from "./formula-3.png"
+import Formula4 from "./formula-4.png"
+import Formula5 from "./formula-5.png"
+import Formula6 from "./formula-6.png"
+
+export const article = {
+  author: 'Adam Wathan',
+  date: '2023-12-17',
+  title: 'Math behind Uniswap',
+  description:
+    'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+## Introduction to Uniswap
+
+Instead of using the traditional order book system for transactions, **Uniswap** is an **Automated Market Maker (AMM)** - a protocol on the Ethereum mainnet that powers decentralized exchange of tokens (primarily ERC20 standard tokens). AMMs are also called constant function market makers (CFMMs) because they follow a constant product formula.
+
+Uniswap allows traders to swap ERC20 tokens using registered smart contracts where liquidity providers have contributed assets. These swaps are automatically settled using a simple formula!
+
+Let's first examine Uniswap v2, which is more straightforward, before discussing v3.
+
+## Key Variables:
+- **x**: reserves of token0
+- **y**: reserves of token1
+- **k**: product of quantity of both ERC20 tokens
+- **L**: liquidity of each token
+
+## Swap Calculations
+
+In a typical swap, we can calculate the amount of tokens (dy) a trader will receive when providing a given amount (dx) of the other token.
+
+Remember that:
+1. Product (k) and Liquidity (L?) remain unchanged during multiple swaps
+2. k always equals L? when the pool is balanced 50/50, meaning both tokens supply the same value
+
+Since the product will be unchanged:
+`x * y = (x + dx) * (y - dy) = k`
+
+We can transform this formula (omitting k since it remains unchanged):
+`x * y = (x + dx) * (y - dy)`
+
+Simplifies to:
+`dy = (y * dx) / (x + dx)`
+
+Substituting xy for L^2:
+`dy = (L^2 * dx) / (x(x + dx))`
+
+## Proof with Real Example
+
+Let's take the DAI/ETH pool as an example. To retrieve contract info, we find the pool address on Etherscan:
+`0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11`
+
+With this address, we can retrieve data and calculate the Liquidity L?.
+
+For example, when swapping 10 Ethers (dx) for DAI (dy) with our assumptions:
+
+`dy = (y * dx) / (x + dx)`
+
+Alternatively, we can skip using the liquidity value for dy by using the simplified formula.
+
+When checking the calculated result against the Uniswap interface, we see the number is nearly correct. However, Uniswap charges fees on your input token.
+
+In V3, transaction fees are typically 0.3%, while V2 doesn't allow fee adjustments. Therefore, only 99.7% of input tokens remain in the pool.
+
+# Math behind Uniswap - swap (part2)
+
+This article continues the discussion from my previous ideas, focusing on swap transactions in Uniswap v3. We previously explored how to calculate token outputs with fixed inputs, but version 3 involves more complex mathematics for efficiency.
+
+## Translating the Constant Product Formula
+
+The Uniswap white paper explains how they've modified the constant product formula in v3. The new version translates the curve to the left and below to keep prices within boundaries. This shows a familiar pattern we discussed previously, but with additional nuances.
+
+
+<img src={UniswapMath1} alt="" />
+
+Specifically, they've translated the original formula to make positions solvent within a range [Pa, Pb] - the price boundaries that liquidity providers can set. This is a key new feature of Uniswap v3.
+
+## Understanding Price Boundaries
+
+When liquidity providers set up price boundaries (Pa for lower price, Pb for higher price), prices cannot leave this range. For example, if traders swap ETH for DAI in a pool, the price of ETH typically decreases as more ETH enters the pool. While this movement continues indefinitely in v2, the price will halt at the boundary in v3, making the pool unavailable for certain transactions until reverse trades occur.
+
+This works because we effectively translate the curve to the left and below.
+
+## Real vs. Virtual Reserves
+
+Internally, the definition of reserves has changed in v3. We now distinguish between real and virtual reserves. These are simply new variables for smart contracts to track.
+
+As mentioned before, the amount of reserves a pool should maintain follows the value of Liquidity. Therefore, calculating liquidity is always our first priority, especially for swap transactions where liquidity remains constant.
+
+<img src={UniswapMath2} alt="" />
+
+## Calculating Liquidity in v3
+
+Unfortunately, we can no longer directly calculate liquidity by multiplying x by y as we did in v2, because both assets now represent virtual assets.
+
+Remember that reserves in v2 always refer to real reserves.
+
+To calculate virtual assets, you can check the math formula in the [Uniswap v3-periphery smart contract](https://github.com/Uniswap/v3-periphery/blob/main/contracts/libraries/LiquidityAmounts.sol).
+
+I also recommend reading Atis Elsts' detailed explanation of the white paper's more complex sections.
+
+## Solving for Liquidity
+
+We can solve for liquidity using the formula from either side, as liquidity remains constant across multiple swap transactions.
+
+## Example Calculation
+
+Let's work through an example using a DAI/ETH pool with 0.3% transaction fees:
+- X = 61.17 ETH
+- Y = 91753 DAI
+- dX = 10
+- P = 1500
+- [Pa, Pb] = [1000, 2250]
+
+Calculating the immutable liquidity from our equation with the initial information:
+Lx = Ly = 12910.13, which is about 5.45 times larger than what would be provided in a v2 pool. This shows how v3 provides more efficiency and depth for traders while generating more transaction fees for liquidity providers using the same tokens.
+
+We can then restate the equation to solve for the current price P by substituting x = 71.17 and L = 12910.13 (the new amount in the pool).
+
+<img src={Formula1} />
+<img src={Formula2} />
+<img src={Formula3} />
+
+This gives us P = 1413.8968.
+
+<img src={Formula4} />
+
+We can easily solve for the real reserve y using the same implementation:
+The answer is y = 77190.2189, which is the current amount of token y that should remain in the pool.
+<img src={Formula5} />
+
+Finally, the token amount we can swap for is 14562.78109.
+
+To prove our outcome, as mentioned in the previous article, we can use an alternative function, but X and Y now represent virtual reserves that require additional work.
+<img src={Formula6} />
+---
+
+## References
+
+- [Uniswap v3 Whitepaper](https://uniswap.org/whitepaper-v3.pdf)
+- [Uniswap v3 Liquidity Math](http://atiselsts.github.io/pdfs/uniswap-v3-liquidity-math.pdf)
+
+---
+
+**Reference:**
+[Uniswap_whitepaper_v3](https://uniswap.org/whitepaper-v3.pdf)

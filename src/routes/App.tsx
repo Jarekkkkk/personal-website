@@ -8,6 +8,7 @@ import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
+  MediumIcon,
   XIcon,
 } from "@/components/SocialIcons";
 import { ArticleWithSlug, getAllArticles } from "@/lib/articles";
@@ -74,7 +75,6 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 }
 
 function Article({ article }: { article: ArticleWithSlug }) {
-  console.log("article", article);
   return (
     <Card as="article">
       <Card.Title href={`/articles/${article.slug}`}>
@@ -110,10 +110,10 @@ function Newsletter() {
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
+        <span className="ml-3">Send me the message</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
+        Share anything interesting with me
       </p>
       <div className="mt-6 flex">
         <input
@@ -282,30 +282,31 @@ export default function App() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software designer, founder, and amateur astronaut.
+            Web3 Developer, Blockchain Believer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I’m Jarek, a web3 designer and developer based in Taiwan. I’m deeply
+            passionate about DeFi projects and blockchain use cases like DID and
+            Automous World to bring true utility to the world.
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink to="#" aria-label="Follow on X" icon={XIcon} />
             <SocialLink
-              to="#"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
+              to="https://x.com/0xJarekkkkk"
+              target="_blank"
+              aria-label="Follow on X"
+              icon={XIcon}
             />
             <SocialLink
-              to="#"
+              to="https://github.com/Jarekkkkk"
+              target="_blank"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              to="#"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
+              to="https://medium.com/@jarekkkkk"
+              target="_blank"
+              aria-label="Follow on Medium"
+              icon={MediumIcon}
             />
           </div>
         </div>

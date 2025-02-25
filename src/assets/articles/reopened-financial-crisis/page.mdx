@@ -1,0 +1,103 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import GameTheory from "./game-theory.webp"
+import LunaNegativeYield from "./luna-negative-yield.webp"
+
+export const article = {
+  author: 'Jarek Lin',
+  date: '2022-09-05',
+  title: 'Reopened "Asia Financial Crisis" in Crypto - Luna and UST event',
+  description:
+    'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+After Luna has crashed and become dust and ashes for nearly a month, it has set an indelible milestone in crypto history and taught all of us a lesson - being aware of anything unknown and ignored. History repeats itself, and the Luna incident seems like another classic Ponzi scheme in the financial industry to me, but this time it happened and was covered by crypto and blockchain technology, which is ironic as they should play a role as a security gatekeeper.
+
+After examining the sequence of Luna events and arbitrage mechanism under the hood, honestly speaking, the damage was not that unpredictable and had been mentioned before the incident in the community with its:
+
+- Negative yield on Anchor banking
+- UST backed by Luna whose value was highly built on the Terra Luna chain from POS staking, governance & gas fee, requiring a certain amount of activities in the system
+
+Since storytelling is more straightforward and understandable to realize the ins and outs of Luna from a comprehensive view with both sharing similar factors and circumstances, let me introduce one of the famous and recent financial crises at the end of 1990 - the Asia Financial Crisis.
+
+## The Asia Financial Crisis: A Brief Overview
+
+Let's jump to the ending of the story beforehand. The outcome was a sequence of currency depreciation triggered by Thailand's policy of giving up the fixed exchange rate, leading to slumped stock markets and massive withdrawals escaping from Asia. While most people attribute the cause to depressed investors and losing faith in the market, it's simply the last straw being a foreseeable outcome rather than a reason.
+
+We will depict from scratch first. Lots of investors were looking forward to the development of Asia, especially Southeast Asia in the 1990s, for their subsequent high GDP growth as most developing countries adopted the export-led strategy to stimulate exports by means of:
+
+1. Subsidies
+2. Favorable high-interest rates
+3. Fixed exchange rates to enjoy competitive pricing
+
+This seemed like an appealing and reasonable investment as the US was in expansion under President Reagan along with Reaganomics policy through liberating government control.
+
+As a result, a large number of funds and investments flowed into the Asia market. However, when equity exceeds its substantial value, which gives rise to either negative yield or unsustainable business models and financial performance, it is undoubtedly a bubble. One of the famous economists, Krugman, mentioned the alert in 1994 and pointed out that most of the high GDP was sourced from investment capital inflow rather than the shares by exporting goods.
+
+What's worse, everything deteriorated when governments still tried to "anchor" the exchange rate to USD, accumulating massive USD-denominated external debt to "withstand the pressure of appreciation."
+
+While the market is never consistently good, please keep in mind that the market is dynamic and everything could happen all of a sudden. Lack of foreign reserves with poor export performance and giant credit loans creates a high probability of exposure to debt default - failing to pay off the debt - when cash washes off and transfers to where yields offer higher attractive interest rates. Coincidentally, the US started to raise interest rates to combat inflation then, thereby making those loans denominated in USD spike and starting bankruptcies among countries and enterprises.
+
+### Key Factors of the Asian Financial Crisis:
+
+1. **Fixed exchange rates**
+   ? Remained fixed exchange rate to stimulate export
+   
+2. **Trade deficit**
+   ? Borrowed funds were in vain on trading performance
+   
+3. **Accumulated loans**
+   ? Debt from depositors and investments
+
+*Note: The increasing amount of loans doesn't always represent worse financial performance; sometimes it even means business maintains a healthy cycle unless your equity is profitable and affordable.*
+
+## The Luna Parallel: Same Mistakes
+
+Jumping into our main role - Luna - and doing a comparison, it seems like Luna shot itself in the foot by repeating the same mistakes.
+
+### In the Luna scenario:
+
+#### 1. Fixed exchange rate
+
+As you know, UST is an algorithmic Stablecoin of Luna Labs, trying to peg to USD under its unique arbitrage mechanism. The brief concept depends on a minting/burning mechanism to balance the quantity of both assets in the pool, pushing the price back to $1. However, while the model seems rather sustainable and flawless in a limited amount of trading, it requires some premises honestly speaking.
+
+Everything works smoothly if the current price is above the peg because it is easier to make something devalued as Luna can mint the UST to enlarge the amount of UST when Luna is appreciated, but not vice versa. The mechanism is attached to investors being rational and withstanding the expectation that price will come back sometime in the near future.
+
+For example, let's assume the current LUNA price, LUNA/USD = LUNA/UST = 100. In theory, when UST is below $1 at $0.8, we could buy 100 UST at the cost of $80 on the market, then exchange for 1 LUNA for $100, selling on the market to earn a $20 profit. But when huge trades come in to pressure the price significantly, the beliefs of either:
+- UST price tagging at $1, or
+- Luna's price being unchanged at $100
+
+were broken. It thereby expands the quantity of Luna and devalues it, which squeezes the arbitrage space - $20 zone in the example - if:
+- Someone can buy at a less costly price like $0.75 and sell Luna at a competitive price below $100, or
+- Luna dropped by over 20% in the above example
+
+<img src={GameTheory} alt="" />
+
+Extending this, we could use Game Theory thinking to make the explanation much more understandable and solid. Let's talk about the desired case first:
+
+When the market is quiet without disturbance, long positions (who think something is valuable and the true value is over current price) and short positions (who think something is overvalued and true value is below current price) are nip and tuck, leading to price being dynamically unchanged and pegged to willing price with little and acceptable fluctuations.
+
+While in the second example, in a serious bear market and negative yield performance or limited revenue of Luna, unquestionably short positions are dominant over long positions, making no one believe in recovery, keeping price falling as long positions no longer exist.
+
+Moreover, the cost of maintaining the price increases when the USD appreciates during the FED's "interest rate hike" policy. In our arbitrage model, we highly depend on Luna's value to support the price, whereas it's not enough against the imbalance in market cap between UST and Luna, meaning Luna is incapable of paying most of the accumulated debts. Briefly saying, we are using descending Luna to amid the wound caused by ascending USD.
+
+#### 2. Trade deficit
+
+While it is a bit imperceptible talking in "trade deficit" terms when it comes to the crypto world, changing the definition to "generated revenue" which leverages on borrowed funds will be more sensible. In the Luna chain, the usual revenue is collected by:
+1. Transaction fee
+2. POS staking
+3. Governance mechanism
+
+As you could reckon and infer, the above three revenue sources are all highly dependent and bet on "activities on Luna chain." As a result, if Luna still hasn't yielded enough profit thereby pouring the value to Luna's price, it will lose the ability to recover the UST.
+
+#### 3. Accumulated loans
+
+Such a high deposit rate like 20% is a kind of creeping cancer when investment (Luna) is still in a faint stage and developing. The same reason scenario from the Asia financial crisis - a huge amount of borrowed funds from current depositors without enough loan fees borrowing to lenders to carry on the loan system, with Anchor playing a role as a negative yield bank.
+<img src={LunaNegativeYield} alt="" />
+
+## Conclusion
+
+The arbitrage model is not useless as it shows; however, it opens up an innovative path to making the crypto world decentralized and efficient. What has been ignored is the lack of some emergency measures to avoid attacks or pressures from large-scale trading, which is also the reason why DAI could withstand the bear market and investor panics. I might do some analysis and smart contract reference to its smart contract design in the future, explaining why over-collateral backed stablecoins are much more secure.
+
+That's all the analysis and sharing. Hope you enjoy it!
