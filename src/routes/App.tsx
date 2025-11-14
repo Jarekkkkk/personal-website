@@ -4,13 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Container } from "@/components/Container";
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  MediumIcon,
-  XIcon,
-} from "@/components/SocialIcons";
+import { GitHubIcon, MediumIcon, XIcon } from "@/components/SocialIcons";
 import { ArticleWithSlug, getAllArticles } from "@/lib/articles";
 import { formateDate } from "@/lib";
 import { useEffect, useState } from "react";
